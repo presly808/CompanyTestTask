@@ -44,7 +44,7 @@ You can also run tests only ```mvn test```
 ```ServiceLocator``` holds all singletons as dao, services and others. It takes all objects creation in one place
 
 #### Class Diagram ####
-![alt text](https://raw.githubusercontent.com/presly808/AsposeTask/master/resources/diagram.png "Class Diagram")
+![alt text](file://raw.githubusercontent.com/presly808/AsposeTask/master/resources/diagram.png "Class Diagram")
 
 #### Class Diagrams of the model package ####
 ![alt text](https://raw.githubusercontent.com/presly808/AsposeTask/master/resources/model.png "model diagram")
