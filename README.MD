@@ -53,15 +53,15 @@ You can also run tests only ```mvn test```
 ```java
     public interface SalaryCalculationService {
 
-    int calculateYearBenefit(int fixedSalary, double yearBenefitPercent, int fullYears, double limitOfYearBenefitPercent);
+        int calculateYearBenefit(int fixedSalary, double yearBenefitPercent, int fullYears, double limitOfYearBenefitPercent);
 
-    /**
-     * calculate benefits with level limitaion
-     *
-     * @param level limit a calculation level, if -1 we consider all hierarchy
-     * */
-    int calculateTeamBenefitByLevel(List<Worker> root, int level);
-}
+        /**
+         * calculate benefits with level limitaion
+         *
+         * @param level limit a calculation level, if -1 we consider all hierarchy
+         * */
+        int calculateTeamBenefitByLevel(List<Worker> root, int level);
+    }
 ```
 
 ## Pluses and minuses of the app ##
