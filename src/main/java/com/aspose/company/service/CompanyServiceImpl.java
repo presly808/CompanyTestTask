@@ -3,13 +3,14 @@ package com.aspose.company.service;
 import com.aspose.company.dao.EmployeeDao;
 import com.aspose.company.dao.ManagerDao;
 import com.aspose.company.dao.SalesDao;
-import com.aspose.company.exception.AppValidationException;
 import com.aspose.company.exception.NoSupportedSubTypeException;
 import com.aspose.company.exception.NoWorkerFoundException;
 import com.aspose.company.exception.WorkerIsNotSupervisorException;
 import com.aspose.company.model.*;
 import com.aspose.company.utils.service_locator.ServiceLocator;
+import com.aspose.company.utils.visualization.PrintUtils;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -82,7 +83,7 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public boolean addSubworker(int supervisorId, int subworkerId) throws NoWorkerFoundException, WorkerIsNotSupervisorException {
+    public Supervisor addSubworker(int supervisorId, int subworkerId) throws NoWorkerFoundException, WorkerIsNotSupervisorException {
         Worker supervisor = getById(supervisorId);
 
         if(!(supervisor instanceof Supervisor)){
@@ -95,7 +96,9 @@ public class CompanyServiceImpl implements CompanyService {
 
         castedSupervisor.getSubWorkers().add(subWorker);
 
-        return true;
+        subWorker.setSupervisor(castedSupervisor);
+
+        return castedSupervisor;
     }
 
     @Override
@@ -119,5 +122,11 @@ public class CompanyServiceImpl implements CompanyService {
         Stream<Worker> all = Stream.concat(Stream.concat(streamEmpl, streamSales), streamManager);
 
         return all.map(Employable::calculateSalary).collect(Collectors.summingInt((salary) -> salary));
+    }
+
+    @Override
+    public String getTreeView(int workerId) throws NoWorkerFoundException {
+        Worker worker = getById(workerId);
+        return PrintUtils.getTreeView(Arrays.asList(worker), -1);
     }
 }

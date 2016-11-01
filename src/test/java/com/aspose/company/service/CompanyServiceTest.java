@@ -1,11 +1,11 @@
 package com.aspose.company.service;
 
 import com.aspose.company.db.AppDB;
+import com.aspose.company.exception.NoSupportedSubTypeException;
 import com.aspose.company.exception.NoWorkerFoundException;
-import com.aspose.company.model.Employee;
-import com.aspose.company.model.Manager;
-import com.aspose.company.model.Sales;
-import com.aspose.company.model.Worker;
+import com.aspose.company.exception.WorkerIsNotSupervisorException;
+import com.aspose.company.model.*;
+import com.aspose.company.utils.generator.DataGenerationUtils;
 import com.aspose.company.utils.service_locator.ServiceLocator;
 import org.junit.After;
 import org.junit.Assert;
@@ -17,7 +17,6 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
 
 /**
  * Created by serhii on 11/1/16.
@@ -28,7 +27,7 @@ public class CompanyServiceTest {
     private CompanyService companyService;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         companyService = ServiceLocator.getBean(CompanyService.class);
         AppDB appDB = ServiceLocator.getBean(AppDB.class);
 
@@ -38,7 +37,7 @@ public class CompanyServiceTest {
     }
 
     @After
-    public void tearDown(){
+    public void tearDown() {
         AppDB appDB = ServiceLocator.getBean(AppDB.class);
 
         appDB.managerMap = null;
@@ -129,21 +128,103 @@ public class CompanyServiceTest {
 
     @Test
     public void testAddSubworker() throws Exception {
+        Employee employee = new Employee("Anton", 1000, new Date());
+        Worker created1 = companyService.addWorker(employee);
+
+        Sales sales = new Sales("Andrey", 1000, new Date());
+        Worker created2 = companyService.addWorker(sales);
+
+        Manager manager = new Manager("Anatoliy", 1000, new Date());
+        Worker created3 = companyService.addWorker(manager);
+
+        Supervisor supervisor = companyService.addSubworker(created3.getId(), created1.getId());
+
+        Assert.assertThat(supervisor.getSubWorkers(), contains(employee));
+    }
+
+    @Test(expected = NoWorkerFoundException.class)
+    public void testAddSubworkerNoWorkerFound() throws Exception {
+        Employee employee = new Employee("Anton", 1000, new Date());
+        Worker created1 = companyService.addWorker(employee);
+
+        Sales sales = new Sales("Andrey", 1000, new Date());
+        Worker created2 = companyService.addWorker(sales);
+
+        Manager manager = new Manager("Anatoliy", 1000, new Date());
+        Worker created3 = companyService.addWorker(manager);
+
+        Supervisor supervisor = companyService.addSubworker(-6, created1.getId());
+
+    }
+
+    @Test(expected = WorkerIsNotSupervisorException.class)
+    public void testAddSubworkerWrongTypeWorker() throws Exception {
+        Employee employee = new Employee("Anton", 1000, new Date());
+        Worker created1 = companyService.addWorker(employee);
+
+        Sales sales = new Sales("Andrey", 1000, new Date());
+        Worker created2 = companyService.addWorker(sales);
+
+        Manager manager = new Manager("Anatoliy", 1000, new Date());
+        Worker created3 = companyService.addWorker(manager);
+
+        Supervisor supervisor = companyService.addSubworker(created1.getId(), created3.getId());
 
     }
 
     @Test
     public void testGetWorkerType() throws Exception {
-
+        Employee employee = new Employee("Anton", 1000, new Date());
+        Worker created1 = companyService.addWorker(employee);
+        String type = companyService.getWorkerType(created1.getId());
+        Assert.assertThat(type, equalTo(employee.getClass().getName()));
     }
 
     @Test
-    public void testCalculateMonthSalary() throws Exception {
+    public void getTreeView() throws NoSupportedSubTypeException {
 
+
+        // 1 level
+        Manager root = (Manager) DataGenerationUtils.buildTreeAndSave();
+
+        try {
+            String treeView = companyService.getTreeView(root.getId());
+            System.out.println(treeView);
+            Assert.assertThat(treeView, not(isEmptyOrNullString()));
+        } catch (NoWorkerFoundException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    /* Expected
+
+     type:Manager,name:root,salary:3000,calculatedSalary:3045
+        type:Sales,name:sales1,salary:3000,calculatedSalary:3045
+            type:Sales,name:sales3,salary:3000,calculatedSalary:3018
+                type:Manager,name:manager3,salary:3000,calculatedSalary:3000
+                type:Manager,name:manager4,salary:3000,calculatedSalary:3000
+            type:Sales,name:sales4,salary:3000,calculatedSalary:3000
+            type:Sales,name:sales5,salary:3000,calculatedSalary:3000
+        type:Manager,name:manager1,salary:3000,calculatedSalary:3030
+            type:Manager,name:manager2,salary:3000,calculatedSalary:3030
+                type:Sales,name:sales6,salary:3000,calculatedSalary:3000
+                type:Manager,name:manager5,salary:3000,calculatedSalary:3000
+            type:Employee,name:empl2,salary:3000,calculatedSalary:3000
+        type:Employee,name:empl1,salary:3000,calculatedSalary:3000
+    */
+    @Test
+    public void testCalculateMonthSalary() throws Exception {
+        // 1 level
+        Supervisor supervisor = DataGenerationUtils.buildTreeAndSave();
+        Assert.assertThat(companyService.calculateMonthSalary(supervisor.getId()), is(3045));
     }
 
     @Test
     public void testCalculateMonthSalaryAllWorkers() throws Exception {
-
+        Supervisor supervisor = DataGenerationUtils.buildTreeAndSave();
+        supervisor = (Supervisor) companyService.addWorker(supervisor);
+        System.out.println(companyService.getTreeView(supervisor.getId()));
+        Assert.assertThat(companyService.calculateMonthSalaryAllWorkers(), is(42213));
     }
 }

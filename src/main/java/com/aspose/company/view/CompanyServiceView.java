@@ -5,6 +5,7 @@ import com.aspose.company.exception.NoWorkerFoundException;
 import com.aspose.company.exception.WorkerIsNotSupervisorException;
 import com.aspose.company.model.*;
 import com.aspose.company.service.CompanyService;
+import com.aspose.company.utils.generator.DataGenerationUtils;
 import com.aspose.company.utils.service_locator.ServiceLocator;
 
 import java.text.ParseException;
@@ -24,16 +25,16 @@ public class CompanyServiceView {
 
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-mm-dd");
 
-    public void start(){
+    public void start() {
 
-        int choice = 0;
-        while (choice != 0){
+        int choice = -1;
+        while (choice != 0) {
             showMainMenu();
             System.out.println("do choice");
             choice = inputNumber();
 
-            switch (choice){
-                case 1 :
+            switch (choice) {
+                case 1:
                     showAllWorkers();
                     break;
                 case 2:
@@ -57,15 +58,39 @@ public class CompanyServiceView {
                 case 8:
                     showCalculateWorkersSalaryMenu();
                     break;
+                case 9:
+                    try {
+                        DataGenerationUtils.buildTreeAndSave();
+                    } catch (NoSupportedSubTypeException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case 10:
+                    showTreeViewMenu();
+                    break;
                 case 0:
                     System.out.println("Good bye");
                     break;
                 default:
                     System.out.println("Do choice between 0-8");
             }
+
+            System.out.println();
         }
 
 
+    }
+
+    private void showTreeViewMenu() {
+        System.out.println("Show tree view");
+        System.out.println("Input worker id");
+        int workerId = inputNumber();
+        try {
+            String treeView = companyService.getTreeView(workerId);
+            System.out.println(treeView);
+        } catch (NoWorkerFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     private void showCalculateWorkersSalaryMenu() {
@@ -128,6 +153,8 @@ public class CompanyServiceView {
         System.out.println("6. Get type of worker");
         System.out.println("7. Calculate worker month salary");
         System.out.println("8. Calculate a month salary of all workers");
+        System.out.println("9. Generate Test Data");
+        System.out.println("10. Get Tree View");
         System.out.println();
 
     }
@@ -179,18 +206,18 @@ public class CompanyServiceView {
         int choice = inputNumber();
         Worker worker = null;
 
-        switch (choice){
+        switch (choice) {
             case 1:
-                worker = new Employee(name,salary,hireDate);
+                worker = new Employee(name, salary, hireDate);
                 break;
             case 2:
-                worker = new Sales(name,salary,hireDate);
+                worker = new Sales(name, salary, hireDate);
                 break;
             case 3:
-                worker = new Manager(name,salary,hireDate);
+                worker = new Manager(name, salary, hireDate);
                 break;
             default:
-                worker = new Employee(name,salary,hireDate);
+                worker = new Employee(name, salary, hireDate);
                 break;
         }
 
@@ -217,6 +244,5 @@ public class CompanyServiceView {
     private String inputStr() {
         return scanner.nextLine();
     }
-
 
 }

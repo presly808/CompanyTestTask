@@ -80,4 +80,20 @@ public abstract class Worker implements Employable {
                 ", supervisor=" + supervisor +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Worker worker = (Worker) o;
+
+        return id == worker.id;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
+    }
 }

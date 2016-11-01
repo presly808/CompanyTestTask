@@ -10,7 +10,8 @@ import java.util.Locale;
  */
 public final class DateUtils {
 
-    private DateUtils() {}
+    private DateUtils() {
+    }
 
     public static int getDiffYears(Date first, Date last) {
         Calendar a = getCalendar(first);
@@ -30,9 +31,8 @@ public final class DateUtils {
     }
 
     public static Date createDate(int year, int month, int day) {
-        Calendar cal = new GregorianCalendar(year,month,day);
+        Calendar cal = new GregorianCalendar(year, month, day);
         return cal.getTime();
     }
-
 
 }

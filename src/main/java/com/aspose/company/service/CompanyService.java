@@ -4,6 +4,7 @@ import com.aspose.company.exception.AppValidationException;
 import com.aspose.company.exception.NoSupportedSubTypeException;
 import com.aspose.company.exception.NoWorkerFoundException;
 import com.aspose.company.exception.WorkerIsNotSupervisorException;
+import com.aspose.company.model.Supervisor;
 import com.aspose.company.model.Worker;
 
 import java.util.Date;
@@ -22,12 +23,14 @@ public interface CompanyService {
 
     List<Worker> getAllWorkers();
 
-    boolean addSubworker(int supervisorId, int subworkerId) throws NoWorkerFoundException, WorkerIsNotSupervisorException;
+    Supervisor addSubworker(int supervisorId, int subworkerId) throws NoWorkerFoundException, WorkerIsNotSupervisorException;
 
     String getWorkerType(int workerId) throws NoWorkerFoundException;
 
     int calculateMonthSalary(int workerId) throws NoWorkerFoundException;
 
     int calculateMonthSalaryAllWorkers();
+
+    String getTreeView(int workerId) throws NoWorkerFoundException;
 
 }
