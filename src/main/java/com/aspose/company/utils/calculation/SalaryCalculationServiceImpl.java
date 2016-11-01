@@ -44,26 +44,6 @@ public class SalaryCalculationServiceImpl implements SalaryCalculationService {
     }
 
 
-    @Override
-    public int calculateTeamBenefitAllLevels(List<Worker> workerList) {
-
-        if(workerList == null || workerList.isEmpty()){
-            return 0;
-        }
-
-        int amount = 0;
-
-        for (Worker worker : workerList) {
-            amount += worker.calculateSalary();
-
-            if(worker instanceof Supervisor){
-                amount += calculateTeamBenefitAllLevels(((Supervisor) worker).getSubWorkers());
-            }
-        }
-
-        return amount;
-    }
-
 
 
 }

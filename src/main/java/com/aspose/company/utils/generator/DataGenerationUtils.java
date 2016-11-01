@@ -27,7 +27,6 @@ public final class DataGenerationUtils {
         return atomicLong.getAndIncrement();
     }
 
-
     public static Supervisor buildTreeAndSave() throws NoSupportedSubTypeException {
 
         CompanyService companyService = ServiceLocator.getBean(CompanyService.class);

@@ -14,6 +14,36 @@ import java.util.List;
 public class PrintUtils {
 
     /**
+     * Expected
+     *
+     * Man
+     *  Sal
+     *      Sales
+     *          Man
+     *          Man
+     *      Sal
+     *      Sal
+     *  Man
+     *      Man
+     *          Sales
+     *          Man
+     *      Employee
+     *  Empl
+     *
+     * */
+    public static void main(String[] args) {
+        try {
+            Supervisor supervisor = DataGenerationUtils.buildTreeAndSave();
+            System.out.println(getTreeView(Arrays.asList(supervisor), -1, ""));
+        } catch (NoSupportedSubTypeException e) {
+            e.printStackTrace();
+        }
+
+
+
+    }
+
+    /**
      *
      *
      * @param level limit for tree view, if you pass <code>-1</code> then you will get all levels

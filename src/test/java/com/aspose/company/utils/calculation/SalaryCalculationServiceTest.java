@@ -159,7 +159,7 @@ public class SalaryCalculationServiceTest {
         * */
 
         Assert.assertThat("salaryWithHierarchyLevel1",
-                calculationService.calculateTeamBenefitAllLevels(Arrays.asList(root)), is(equalTo(27000)));
+                calculationService.calculateTeamBenefitByLevel(Arrays.asList(root), -1), is(equalTo(27000)));
     }
 
     /**

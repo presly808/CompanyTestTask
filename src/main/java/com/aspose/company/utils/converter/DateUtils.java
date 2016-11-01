@@ -10,8 +10,7 @@ import java.util.Locale;
  */
 public final class DateUtils {
 
-    private DateUtils() {
-    }
+    private DateUtils() {}
 
     public static int getDiffYears(Date first, Date last) {
         Calendar a = getCalendar(first);

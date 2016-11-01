@@ -2,6 +2,7 @@ package com.aspose.company.model;
 
 import com.aspose.company.utils.calculation.SalaryCalculationService;
 import com.aspose.company.utils.converter.DateUtils;
+import com.aspose.company.utils.file.PropertiesHolder;
 
 import java.util.Date;
 
@@ -10,8 +11,11 @@ import java.util.Date;
  */
 public class Employee extends Worker {
 
-    public static final double YEAR_BENEFIT_PERCENT = 0.03;
-    public static final double BENEFIT_LIMIT_PERCENT = 0.30;
+    public static final double YEAR_BENEFIT_PERCENT =
+            PropertiesHolder.getDoubleProperty("employee.year.benefit");
+
+    public static final double BENEFIT_LIMIT_PERCENT =
+            PropertiesHolder.getDoubleProperty("employee.year.benefit.limit");
 
     public Employee(String name, int monthSalary, Date hireDate) {
         super(name, monthSalary, hireDate);
