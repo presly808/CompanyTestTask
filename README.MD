@@ -39,15 +39,15 @@ You can also run tests only ```mvn test```
 ## Project Architecture ##
 
 #### Main App Components ####
-![alt text](https://raw.githubusercontent.com/presly808/AsposeTask/master/resources/basic_diagram.png "main diagram")
+![alt text](https://gitlab.com/presly808/AsposeTasks/raw/master/resources/basic_diagram.png "main diagram")
 
 ```ServiceLocator``` holds all singletons as dao, services and others. It takes all objects creation in one place
 
 #### Class Diagram ####
-![alt text](https://raw.githubusercontent.com/presly808/AsposeTask/master/resources/diagram.png "Class Diagram")
+![alt text](https://gitlab.com/presly808/AsposeTasks/raw/master/resources/diagram.png "Class Diagram")
 
 #### Class Diagrams of the model package ####
-![alt text](https://raw.githubusercontent.com/presly808/AsposeTask/master/resources/model.png "model diagram")
+![alt text](https://gitlab.com/presly808/AsposeTasks/raw/master/resources/model.png "model diagram")
 
 #### Important class for calculations of year benefit and subworkers hierarchy ####
 ```java
