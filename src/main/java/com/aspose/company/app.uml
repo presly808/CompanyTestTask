@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="0.0" y="80.0">com.aspose.company.utils.calculation.SalaryCalculationServiceImpl</node>
+    <node x="562.0" y="410.0">com.aspose.company.dao.SalesDao</node>
+    <node x="550.875" y="80.0">com.aspose.company.model.Worker</node>
+    <node x="263.0" y="410.0">com.aspose.company.service.CompanyService</node>
+    <node x="561.125" y="0.0">com.aspose.company.model.Employable</node>
+    <node x="386.5925925925926" y="580.0">com.aspose.company.utils.service_locator.ServiceLocator</node>
+    <node x="578.7175925925926" y="240.0">com.aspose.company.model.Sales</node>
+    <node x="119.0" y="410.0">com.aspose.company.dao.EmployeeDao</node>
+    <node x="452.8024691358024" y="240.0">com.aspose.company.model.Manager</node>
+    <node x="518.0524691358024" y="160.0">com.aspose.company.model.Supervisor</node>
+    <node x="0.0" y="655.0">com.aspose.company.utils.visualization.PrintUtils</node>
+    <node x="643.0524691358024" y="160.0">com.aspose.company.model.Employee</node>
+    <node x="425.0" y="410.0">com.aspose.company.dao.ManagerDao</node>
+    <node x="398.75" y="320.0">com.aspose.company.dao.GeneralDao</node>
+    <node x="583.25" y="320.0">com.aspose.company.db.AppDB</node>
+    <node x="271.0" y="490.0">com.aspose.company.service.CompanyServiceImpl</node>
+    <node x="60.75" y="0.0">com.aspose.company.utils.calculation.SalaryCalculationService</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.aspose.company.utils.service_locator.ServiceLocator" target="com.aspose.company.dao.ManagerDao">
+      <point x="11.083333333333314" y="-15.0" />
+      <point x="464.1759259259259" y="540.0" />
+      <point x="512.75" y="540.0" />
+      <point x="29.25" y="15.0" />
+    </edge>
+    <edge source="com.aspose.company.dao.EmployeeDao" target="com.aspose.company.db.AppDB">
+      <point x="31.0" y="-15.0" />
+      <point x="212.0" y="380.0" />
+      <point x="593.25" y="380.0" />
+      <point x="-30.0" y="15.0" />
+    </edge>
+    <edge source="com.aspose.company.db.AppDB" target="com.aspose.company.model.Manager">
+      <point x="-26.66666666666663" y="-15.0" />
+      <point x="596.5833333333334" y="295.0" />
+      <point x="497.8024691358024" y="295.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="com.aspose.company.service.CompanyServiceImpl" target="com.aspose.company.service.CompanyService">
+      <point x="-21.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="com.aspose.company.utils.service_locator.ServiceLocator" target="com.aspose.company.dao.SalesDao">
+      <point x="33.25" y="-15.0" />
+      <point x="486.3425925925926" y="550.0" />
+      <point x="633.25" y="550.0" />
+      <point x="23.75" y="15.0" />
+    </edge>
+    <edge source="com.aspose.company.model.Supervisor" target="com.aspose.company.model.Worker">
+      <point x="-35.0" y="-15.0" />
+      <point x="535.5524691358024" y="135.0" />
+      <point x="561.5" y="135.0" />
+      <point x="-31.875" y="15.0" />
+    </edge>
+    <edge source="com.aspose.company.dao.SalesDao" target="com.aspose.company.db.AppDB">
+      <point x="23.75" y="-15.0" />
+      <point x="10.0" y="15.0" />
+    </edge>
+    <edge source="com.aspose.company.model.Sales" target="com.aspose.company.model.Supervisor">
+      <point x="0.0" y="-15.0" />
+      <point x="612.7175925925926" y="215.0" />
+      <point x="596.8024691358024" y="215.0" />
+      <point x="26.25" y="15.0" />
+    </edge>
+    <edge source="com.aspose.company.utils.service_locator.ServiceLocator" target="com.aspose.company.db.AppDB">
+      <point x="55.416666666666686" y="-15.0" />
+      <point x="508.5092592592593" y="560.0" />
+      <point x="667.969135802469" y="560.0" />
+      <point x="667.969135802469" y="390.0" />
+      <point x="653.25" y="390.0" />
+      <point x="30.0" y="15.0" />
+    </edge>
+    <edge source="com.aspose.company.utils.service_locator.ServiceLocator" target="com.aspose.company.dao.EmployeeDao">
+      <point x="-33.25" y="-15.0" />
+      <point x="419.8425925925926" y="550.0" />
+      <point x="150.0" y="550.0" />
+      <point x="-31.0" y="15.0" />
+    </edge>
+    <edge source="com.aspose.company.dao.ManagerDao" target="com.aspose.company.db.AppDB">
+      <point x="29.25" y="-15.0" />
+      <point x="512.75" y="390.0" />
+      <point x="613.25" y="390.0" />
+      <point x="-10.0" y="15.0" />
+    </edge>
+    <edge source="com.aspose.company.model.Worker" target="com.aspose.company.utils.calculation.SalaryCalculationService">
+      <point x="-21.25" y="-15.0" />
+      <point x="572.125" y="55.0" />
+      <point x="204.0" y="55.0" />
+      <point x="47.75" y="15.0" />
+    </edge>
+    <edge source="com.aspose.company.dao.ManagerDao" target="com.aspose.company.dao.GeneralDao">
+      <point x="-29.25" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="com.aspose.company.model.Manager" target="com.aspose.company.model.Supervisor">
+      <point x="0.0" y="-15.0" />
+      <point x="497.8024691358024" y="215.0" />
+      <point x="544.3024691358024" y="215.0" />
+      <point x="-26.25" y="15.0" />
+    </edge>
+    <edge source="com.aspose.company.utils.calculation.SalaryCalculationServiceImpl" target="com.aspose.company.utils.calculation.SalaryCalculationService">
+      <point x="0.0" y="-15.0" />
+      <point x="-47.75" y="15.0" />
+    </edge>
+    <edge source="com.aspose.company.db.AppDB" target="com.aspose.company.model.Sales">
+      <point x="0.0" y="-15.0" />
+      <point x="623.25" y="295.0" />
+      <point x="612.7175925925926" y="295.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="com.aspose.company.dao.EmployeeDao" target="com.aspose.company.dao.GeneralDao">
+      <point x="-31.0" y="-15.0" />
+      <point x="150.0" y="370.0" />
+      <point x="417.25" y="370.0" />
+      <point x="-37.0" y="15.0" />
+    </edge>
+    <edge source="com.aspose.company.dao.SalesDao" target="com.aspose.company.dao.GeneralDao">
+      <point x="-23.75" y="-15.0" />
+      <point x="585.75" y="370.0" />
+      <point x="491.25" y="370.0" />
+      <point x="37.0" y="15.0" />
+    </edge>
+    <edge source="com.aspose.company.model.Employee" target="com.aspose.company.model.Worker">
+      <point x="0.0" y="-15.0" />
+      <point x="691.5524691358024" y="135.0" />
+      <point x="625.25" y="135.0" />
+      <point x="31.875" y="15.0" />
+    </edge>
+    <edge source="com.aspose.company.utils.service_locator.ServiceLocator" target="com.aspose.company.service.CompanyServiceImpl">
+      <point x="-11.083333333333371" y="-15.0" />
+      <point x="442.00925925925924" y="540.0" />
+      <point x="355.0" y="540.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="com.aspose.company.service.CompanyServiceImpl" target="com.aspose.company.dao.SalesDao">
+      <point x="63.0" y="-15.0" />
+      <point x="418.0" y="470.0" />
+      <point x="585.75" y="470.0" />
+      <point x="-23.75" y="15.0" />
+    </edge>
+    <edge source="com.aspose.company.model.Worker" target="com.aspose.company.model.Employable">
+      <point x="21.25" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="com.aspose.company.service.CompanyServiceImpl" target="com.aspose.company.dao.EmployeeDao">
+      <point x="-63.0" y="-15.0" />
+      <point x="292.0" y="470.0" />
+      <point x="212.0" y="470.0" />
+      <point x="31.0" y="15.0" />
+    </edge>
+    <edge source="com.aspose.company.service.CompanyServiceImpl" target="com.aspose.company.dao.ManagerDao">
+      <point x="21.0" y="-15.0" />
+      <point x="376.0" y="460.0" />
+      <point x="454.25" y="460.0" />
+      <point x="-29.25" y="15.0" />
+    </edge>
+    <edge source="com.aspose.company.db.AppDB" target="com.aspose.company.model.Employee">
+      <point x="26.66666666666663" y="-15.0" />
+      <point x="649.9166666666666" y="295.0" />
+      <point x="691.5524691358024" y="295.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="com.aspose.company.utils.service_locator.ServiceLocator" target="com.aspose.company.utils.calculation.SalaryCalculationServiceImpl">
+      <point x="-55.416666666666686" y="-15.0" />
+      <point x="397.6759259259259" y="560.0" />
+      <point x="108.5" y="560.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="com.aspose.company.model.Worker" target="com.aspose.company.model.Supervisor">
+      <point x="10.625" y="15.0" />
+      <point x="604.0" y="135.0" />
+      <point x="605.5524691358024" y="135.0" />
+      <point x="35.0" y="-15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.8042553191489362" x="370.5" y="342.5" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
