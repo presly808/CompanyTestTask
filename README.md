@@ -44,10 +44,10 @@ You can also run tests only ```mvn test```
 ```ServiceLocator``` holds all singletons as dao, services and others. It takes all objects creation in one place
 
 #### Class Diagram ####
-![alt text](https://gitlab.com/presly808/AsposeTasks/raw/master/resources/diagram.png "Class Diagram")
+![alt text](https://gitlab.com/presly808/AsposeTasks/raw/master/resources/general_class_diagram.png "Class Diagram")
 
 #### Class Diagrams of the model package ####
-![alt text](https://gitlab.com/presly808/AsposeTasks/raw/master/resources/model.png "model diagram")
+![alt text](https://gitlab.com/presly808/AsposeTasks/raw/master/resources/model_class_diagram.png "model diagram")
 
 #### Important class for calculations of year benefit and subworkers hierarchy ####
 ```java
