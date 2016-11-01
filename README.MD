@@ -64,11 +64,27 @@ You can also run tests only ```mvn test```
 }
 ```
 
-## Future Issues ##
+## Pluses and minuses of the app ##
+* Pluses
+    * flexible arhcitecture
+    * configuration via a file
+    * separated little components
+    * app is ready to be scaled
+    * dependency injections using ServiceLocator
+    * calculation of complex hierarchy is readable
+    * tool for debugging calculations of tree 
 
+* Minuses
+    * a lot of classes
+    * console view
+    * no persistence db
+
+## Future Issues ##
+* add posibility to calculate salary choosing endDate
+* replace ServiceLocator by Spring
+* improve ```com.aspose.company.utils.visualization.PrintUtils``` to get more detailed debug info
 
 ## Recommendations ##
-
-* Use ```com.aspose.company.utils.visualization.PrintUtils``` to use a tree view
+* Use ```com.aspose.company.utils.visualization.PrintUtils``` to show hierarchy as a tree
 * Change benefit percents via ```app.properties``` which is located in the resources
 * Start point of the program is com.aspose.company.Run
