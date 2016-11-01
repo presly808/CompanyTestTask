@@ -36,6 +36,8 @@
 You can also run tests only ```mvn test```
 
 ## Project Architecture ##
+Class Diagram
+![alt text](https://raw.githubusercontent.com/presly808/AsposeTask/master/resources/diagram.png "Class Diagram")
 
 ## Future Issues ##
 
